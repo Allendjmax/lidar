@@ -1,12 +1,4 @@
-"""
-# -*- coding: utf-8 -*-
------------------------------------------------------------------------------------
-# Author: Nguyen Mau Dung
-# DoC: 2020.08.17
-# email: nguyenmaudung93.kstn@gmail.com
------------------------------------------------------------------------------------
-# Description: Testing script
-"""
+
 
 import argparse
 import sys
@@ -60,7 +52,7 @@ def parse_test_configs():
     parser.add_argument('--batch_size', type=int, default=1,
                         help='mini-batch size (default: 4)')
     parser.add_argument('--peak_thresh', type=float, default=0.2)
-    parser.add_argument('--save_test_output', action='store_true',
+    parser.add_argument('--save_test_output', action='store_true', default=False,
                         help='If true, the output image of the testing phase will be saved')
     parser.add_argument('--output_format', type=str, default='image', metavar='PATH',
                         help='the type of the test output (support image or video)')
@@ -99,7 +91,8 @@ def parse_test_configs():
     ##############Dataset, Checkpoints, and results dir configs#########
     ####################################################################
     configs.root_dir = '../'
-    configs.dataset_dir = os.path.join(configs.root_dir, 'dataset', 'kitti')
+    # configs.dataset_dir = os.path.join(configs.root_dir, 'dataset', 'kitti')
+    configs.dataset_dir = os.path.join('/media/allen/MyPassport/JDF/02-data/0717-30#/lidar_data/data_object_main/')
 
     if configs.save_test_output:
         configs.results_dir = os.path.join(configs.root_dir, 'results', configs.saved_fn)
@@ -148,6 +141,7 @@ if __name__ == '__main__':
 
             # Rotate the bev_map
             bev_map = cv2.rotate(bev_map, cv2.ROTATE_180)
+            print(metadatas['img_path'][0])
 
             img_path = metadatas['img_path'][0]
             img_rgb = img_rgbs[0].numpy()

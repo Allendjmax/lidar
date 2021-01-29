@@ -286,7 +286,8 @@ if __name__ == '__main__':
     configs.num_classes = 3
     configs.output_width = 608
 
-    configs.dataset_dir = os.path.join('../../', 'dataset', 'kitti')
+    # configs.dataset_dir = os.path.join('../../', 'dataset', 'kitti')
+    configs.dataset_dir = os.path.join('/media/allen/MyPassport/JDF/02-data/0717-30#/lidar_data/data_object_image_2')
     # lidar_aug = OneOf([
     #     Random_Rotation(limit_angle=np.pi / 4, p=1.),
     #     Random_Scaling(scaling_range=(0.95, 1.05), p=1.),

@@ -1,12 +1,3 @@
-"""
-# -*- coding: utf-8 -*-
------------------------------------------------------------------------------------
-# Author: Nguyen Mau Dung
-# DoC: 2020.08.17
-# email: nguyenmaudung93.kstn@gmail.com
------------------------------------------------------------------------------------
-# Description: Demonstration script for both front view and back view
-"""
 
 import sys
 import os
@@ -85,13 +76,15 @@ if __name__ == '__main__':
                 img_bgr = show_rgb_image_with_boxes(img_bgr, kitti_dets, calib)
             img_bgr = cv2.resize(img_bgr, (cnf.BEV_WIDTH * 2, 375))
 
-            out_img = np.concatenate((img_bgr, full_bev), axis=0)
-            write_credit(out_img, (50, 410), text_author='Cre: github.com/maudzung', org_fps=(900, 410), fps=fps)
+            # out_img = np.concatenate((img_bgr, full_bev), axis=0)
+            # out_img = np.concatenate(img_bgr)#jdf
+            out_img = img_bgr
+            write_credit(out_img, (50, 410), text_author='allen', org_fps=(900, 410), fps=fps)
 
             if out_cap is None:
                 out_cap_h, out_cap_w = out_img.shape[:2]
                 fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-                out_path = os.path.join(configs.results_dir, '{}_both_2_sides.avi'.format(configs.foldername))
+                out_path = os.path.join(configs.results_dir, '{}_both_2_sides_no_bev.avi'.format(configs.foldername))
                 print('Create video writer at {}'.format(out_path))
                 out_cap = cv2.VideoWriter(out_path, fourcc, 30, (out_cap_w, out_cap_h))
 
